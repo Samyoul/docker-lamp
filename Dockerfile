@@ -11,6 +11,10 @@ RUN apt-get upgrade -y
 COPY debconf.selections /tmp/
 RUN debconf-set-selections /tmp/debconf.selections
 
+RUN apt-get install -y software-properties-common
+RUN LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
+RUN apt-get update -y
+
 RUN apt-get install -y zip unzip
 RUN apt-get install -y \
 	php7.1 \
